@@ -1,0 +1,7 @@
+<img (load) ="meroSuccess()" (error)="imgError()" *ngIf="img; else elseImg" [src]="img" >
+<ng-template #elseImg>
+  <h2>No hay foto</h2>
+</ng-template>
+  <h2>{{messageError}}</h2>
+<!--<p>La direccion de la imagen es {{img}}</p>-->
+<!--<h4>El contador es: {{counter}}</h4>-->

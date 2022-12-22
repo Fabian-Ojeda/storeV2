@@ -1,0 +1,36 @@
+<p>Hoy es {{todayDate | date:'short'}}</p>
+<h1>{{"titulo de la tienda" | uppercase}}</h1>
+<h2>{{"epip le anoicnuf euqrop se neib otse sev is" | reverse}}</h2>
+<h3>Yo nací hace {{myBirthday | timeAgo}}</h3>
+<div>
+  <h4>{{'Letras por numeros' | vocalToNumber}} </h4>
+  <button (click)="createNewProduct()">Crear nuevo producto</button>
+  <button (click)="getProductsByPage()">Pedir mas</button>
+</div>
+<div class="products--grid" >
+  <app-product *ngFor="let product of products" [product]="product" (addedProduct)="productToCar($event)" (productDetail)="onShowDetail($event)"></app-product>
+</div>
+<div class="product-detail" [class.active]="showProductDetail">
+  <div>
+    <button (click)="toogleProductDetail()">Cerrar</button>
+    contenido
+    <h1>{{productChoosed.title}}</h1>
+    <swiper
+      [config]="config"
+    >
+      <ng-template swiperSlide *ngFor="let image of productChoosed.images">
+        <div class="divImageProductChoosed">
+          <img class="imgProductChoosed" [src]="image">
+        </div>
+      </ng-template>
+    </swiper>
+    <h2>{{productChoosed.description}}</h2>
+    <div>
+      <button (click)="updateProduct()">Editar</button>
+      <button (click)="deleteProduct()">Eliminar</button>
+    </div>
+  </div>
+</div>
+<div>
+  <p>Tienes {{totalProducts}} productos agregados, eso te cuesta ${{totalCar}}</p>
+</div>

@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url(./styles/reset.scss);
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import '~swiper/swiper-bundle.css';
+@import '~swiper/swiper.min.css';
+
+* {
+  font-family: 'QuickSand', sans-serif;
+}
+
+.products--grid {
+  img {
+    border-radius: 10%;
+  }
+}
+
+//tablets
+@media screen and (min-width: 40em) and (max-width: 63.9em){
+  .products--grid {
+    img {
+      border-radius: 20%;
+    }
+  }
+}
+
+
+//web desk
+@media screen and (min-width: 64em){
+  .products--grid {
+    img {
+      border-radius: 0px;
+      max-height: 200px;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<a [routerLink]="['/product',product.id]">
+  <app-img *ngIf="product.images.length>0" (loaded)="todoFine($event)" [img]="product.images[0]"></app-img>
+</a>
+<h2>{{product.price | currency:'COP'}}</h2>
+<p>{{product.title}}</p>
+<h3>Impuesto: {{product?.taxes |currency:'COP'}}</h3>
+<!--<p appHighlight >{{product.description}}</p>-->
+<button (click)="viewDetail()">Ver detalle</button>
+<button (click)="addProduct()">Va pal carro <i class="fa-brands fa-opencart"></i></button>
