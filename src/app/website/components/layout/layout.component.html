@@ -1,0 +1,15 @@
+<app-header [userLoaded]="userLoaded"></app-header>
+<div>
+  <button (click)="createUser()" >Crear el usuario</button>
+  <button (click)="login()" >Logear</button>
+  <button (click)="getProfile()">Obtener el perfil</button>
+</div>
+<div>
+  <button (click)="downloadPDF()" >Descargar PDF</button>
+</div>
+<div>
+  <input type="file" (change)="onUpload($event)">
+  <img *ngIf="imgRtaCreation" [src]="imgRtaCreation">
+</div>
+
+<router-outlet></router-outlet>
