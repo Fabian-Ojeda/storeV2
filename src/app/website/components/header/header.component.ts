@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {StoreService} from "../../../services/store.service";
 import {Category, Product} from "../../../models/product.model";
 import {CategoriesServiceService} from "../../../services/categories-service.service";
@@ -9,6 +9,7 @@ import {CategoriesServiceService} from "../../../services/categories-service.ser
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
+  @Output() closeSession = new EventEmitter();
   @Input() userLoaded = ''
   activeMenu = false
   productsAdded: Product[] = []
@@ -30,5 +31,10 @@ export class HeaderComponent implements OnInit{
 
   constructor(private storeService:StoreService, private categoriesService:CategoriesServiceService) {
     this.productsAdded = storeService.car
+  }
+
+  endSession() {
+    this.closeSession.emit()
+    this.userLoaded=''
   }
 }

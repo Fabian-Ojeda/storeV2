@@ -3,6 +3,7 @@ import {CreateUserDTO} from "../../../models/user.model";
 import { AuthService} from "../../../services/auth.service";
 import {UsersService} from "../../../services/users.service";
 import {FilesService} from "../../../services/files.service";
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'app-layout',
@@ -20,12 +21,13 @@ export class LayoutComponent {
   constructor(
     private userService: UsersService,
     private authService: AuthService,
-    private fileService:FilesService
+    private fileService:FilesService,
+    private router:Router
   ) {
   }
 
   createUser(){
-    const UserToCreate: CreateUserDTO = {name:"fabian",email:"fabian@email.com", password: "password"}
+    const UserToCreate: CreateUserDTO = {name:"fabian",email:"fabian@email.com", password: "password", role:"customer"}
     this.userService.create(UserToCreate).subscribe(rta => {
       console.log(rta)
     })
@@ -68,5 +70,10 @@ export class LayoutComponent {
       })
 
     }
+  }
+
+  endSession(){
+    this.authService.endSession()
+    this.router.navigate(['/home'])
   }
 }

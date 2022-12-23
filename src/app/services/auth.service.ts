@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Auth} from "../models/auth.model";
 import {User} from "../models/user.model";
-import {tap} from "rxjs";
+import {BehaviorSubject, switchMap, tap} from "rxjs";
 import {TokenService} from "./token.service";
+import {Product} from "../models/product.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl='https://young-sands-07814.herokuapp.com/api/auth'
+  private apiUrl='https://damp-spire-59848.herokuapp.com/api/auth'
+  private user = new BehaviorSubject<User | null>(null)
+  user$ = this.user.asObservable()
 
   constructor(
     private httpCLient:HttpClient,
@@ -26,7 +29,13 @@ export class AuthService {
   }
 
   profile (){
-    return this.httpCLient.get<User>(`${this.apiUrl}/profile`)
+    return this.httpCLient.get<User>(`${this.apiUrl}/profile`).pipe(
+      tap(user => this.user.next(user))
+    )
+  }
+
+  endSession(){
+    this.tokenService.deleteToken()
   }
 
 }

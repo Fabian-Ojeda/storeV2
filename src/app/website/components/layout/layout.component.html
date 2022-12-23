@@ -1,4 +1,4 @@
-<app-header [userLoaded]="userLoaded"></app-header>
+<app-header [userLoaded]="userLoaded" (closeSession)="endSession()"></app-header>
 <div>
   <button (click)="createUser()" >Crear el usuario</button>
   <button (click)="login()" >Logear</button>

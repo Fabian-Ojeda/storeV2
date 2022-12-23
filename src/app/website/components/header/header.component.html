@@ -36,7 +36,14 @@
       </ul>
     </nav>
     <div class="info">
-      <div class="account">{{userLoaded}}</div>
+      <div class="account">
+        <a routerLink="/profile">
+          {{userLoaded}}
+        </a>
+      </div>
+      <div>
+        <button *ngIf="userLoaded!=''" (click)="endSession()" >Cerrar sesión</button>
+      </div>
       <div  class="cart">
         <a href="">
           <i class="fa-solid fa-cart-shopping"></i>

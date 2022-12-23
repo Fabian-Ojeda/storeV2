@@ -14,7 +14,7 @@ import { RegisterComponent} from "./pages/register/register.component";
 import { RecoveryComponent} from "./pages/recovery/recovery.component";
 import { ProfileComponent} from "./pages/profile/profile.component";
 import { ProductDetailComponent} from "./pages/product-detail/product-detail.component";
-
+import { QuicklinkModule } from "ngx-quicklink";
 
 @NgModule({
   declarations: [
@@ -27,13 +27,14 @@ import { ProductDetailComponent} from "./pages/product-detail/product-detail.com
     RecoveryComponent,
     ProfileComponent,
     ProductDetailComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     CommonModule,
     WebsiteRoutingModule,
     SwiperModule,
-    SharedModule
+    SharedModule,
+    QuicklinkModule
 
   ]
 })
